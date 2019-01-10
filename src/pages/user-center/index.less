@@ -1,0 +1,45 @@
+page {
+    background: #EEEFF1;
+}
+
+.user-center {
+    &-top {
+        .user-settings {
+            padding: 16px 24px;
+            background: #FFFFFF;
+            .user-icon-right {
+                float: right;
+            }
+            .settings {
+                margin-right: 40px;
+            }
+            .clearfix:after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+        }
+    }
+    .user-info {
+        display: flex;
+        height: 140px;
+        padding-left: 40px;
+        background: #FFFFFF;
+        &-avatar {
+            flex: 1;
+            margin-top: 16px;
+        }
+        &-detail {
+            flex: 4;
+        }
+    }
+    .gap {
+        margin-bottom: 30px;
+    }
+    // .bottom-tab {
+    //     margin-bottom: 150px;
+    // }
+    .at-list__item .item-extra__info {
+        max-width: 200px;
+    }
+}

@@ -1,0 +1,57 @@
+.list {
+    padding: 20px;
+    margin: 10px 0;
+    font-size: 26px;
+    border-radius: 5px;
+    background: #FFFFFF;
+    &-main {
+        display: flex;
+        &-left {
+            flex: 1;
+        }
+        &-image {
+            width: 120px;
+            height: 180px;
+        }
+        &-right {
+            flex: 5;
+            margin-left: 20px;
+        }
+    }
+    &-item {
+        height: 60px;
+        line-height: 60px;
+        .title {
+            font-size: 30px;
+            font-weight: 600;
+        }
+        &-center {
+            height: 60px;
+            line-height: 60px;
+            color: #666666;
+            .count {
+                color: lightcoral;
+            }
+            .divide {
+                padding: 0 5px;
+            }
+        }
+        .actor {
+            color: #666666;
+        }
+        .operation {
+            float: right;
+            width: 120px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .wantSee {
+            color: lightcoral;
+            border: 1px solid lightcoral;
+        }
+        .sell {
+            color: #679c21;
+            border: 1px solid #679c21;
+        }
+    }
+}

@@ -1,0 +1,108 @@
+page {
+    background: #EEEFF1;
+    .test-h{
+        height:100vh
+    }
+    image{
+      width:100vw;
+      height:100vh
+    }
+    @keyframes musicRotate{
+      from
+      {transform: rotate(0deg)}
+    to
+      {transform: rotate(360deg)}
+    }
+
+  @keyframes musicStop
+{    from
+     { transform: rotate(20deg)}
+    to
+      {transform: rotate(0deg)}}
+  @keyframes musicStart
+{    from
+      {transform: rotate(0deg)}
+    to
+      {transform: rotate(20deg)}
+    }
+    @keyframes infoAnimation{
+      0%  {transform: scale(1) translate(0, 0);}
+      50% {transform: scale(.8) translate(5px, 5px)}
+    100%  {transform: scale(1) translate(0, 0)}
+    }
+
+    .bg_music{
+      position: fixed;
+      right: 0;
+      top: 20rpx;
+      width: 100rpx;
+      z-index: 99;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    .musicImg{
+      width: 60rpx;
+      height: 60rpx
+    }
+
+    .music_icon{
+      animation: musicRotate 3s linear infinite
+    }
+      
+    .music_play{
+      width: 28rpx;
+      height: 60rpx;
+      margin-left: -10rpx;
+      transform-origin: top;
+      transform: rotate(20deg)
+    }
+
+    .playImg{
+      animation: musicStop 1s linear forwards
+    }
+      
+    .pauseImg{
+      animation: musicStart 1s linear forwards
+    }
+      
+    .info {
+        width: 630rpx;
+        background: rgba(255, 255, 255, 0.75);
+        z-index: 9;
+        position: fixed;
+        bottom: 40rpx;
+        left: 50rpx;
+        padding: 10rpx;
+        animation: infoAnimation 12s linear infinite;
+        .content {
+          width: 626rpx;
+          border: 1rpx solid #000;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          position: relative;
+          padding-bottom: 30rpx;
+          h1 {
+            font-size: 50rpx;
+            height: 100rpx;
+            line-height: 100rpx;
+          }
+          p {
+            font-size: 24rpx;
+            height: 60rpx;
+            line-height: 60rpx;
+          }
+          .img_footer {
+            position: absolute;
+            bottom: 0;
+            left: 53rpx;
+            z-index: 99;
+            height: 14rpx;
+            width: 520rpx;
+          }
+        }
+      }
+}

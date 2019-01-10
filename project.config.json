@@ -1,0 +1,16 @@
+{
+	"miniprogramRoot": "dist/",
+	"projectname": "weding",
+	"description": "taro-mtime",
+	"appid": "wx80f84ed0d7bd972f",
+	"setting": {
+		"urlCheck": false,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"cloudfunctionRoot": "static/functions/",
+	"condition": {}
+}
