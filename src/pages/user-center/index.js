@@ -1,9 +1,7 @@
 import Taro from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
-import { AtIcon, AtAvatar, AtList, AtListItem } from "taro-ui"
-import BottomTab from "../components/bottom-tab"
+import { View, Text, OpenData, Button } from '@tarojs/components'
+import { AtIcon, AtList, AtListItem, AtTag, AtBadge, AtMessage, AtModal, AtModalHeader, AtModalContent, AtModalAction } from "taro-ui"
 
-import avatarImage from '../../assets/images/avatar.jpg'
 import './index.less'
 
 export default class UserCenter extends Taro.Component {
@@ -15,8 +13,14 @@ export default class UserCenter extends Taro.Component {
     constructor() {
         super(...arguments)
         this.state = {
-            currentTab: 2
+            currentTab: 2,
+            msgNum: '',
+            isOpened:false
         }
+    }
+
+    componentWillMount() {
+        this.getMessageList()
     }
 
     showSettings() {
@@ -26,31 +30,73 @@ export default class UserCenter extends Taro.Component {
     }
 
     showMessages() {
-        Taro.navigateTo({
+        this.setState({
+            msgNum: ''
+        })
+        Taro.switchTab({
             url: `/pages/user-message/index`
         })
     }
 
-    handleClick = e => {
-        console.log(e)
+    handleClick = type => {
+        Taro.atMessage({
+            'message': '抱歉，个人未开放权限！',
+            'type': type,
+        })
+    }
+
+    getMessageList() {
+        const that = this
+        wx.cloud.callFunction({
+            name: 'messageList',
+            data: {}
+        }).then(res => {
+            that.setState({
+                msgNum: res.result.data.length || ''
+            })
+        })
+    }
+
+    handleConfirm(){
+        this.setState({
+            isOpened:false
+        })
+    }
+
+    handleClickopen(){
+        this.setState({
+            isOpened:true
+        })
     }
 
     render() {
         return (
             <View className='user-center'>
+                <AtMessage />
+                <AtModal
+                    isOpened={isOpened}
+                    title='关于'
+                    confirmText='确认'
+                    onConfirm={this.handleConfirm}
+                    content='这是一个微请柬项目\n\rjust for interesting things'
+                />
                 <View className='user-center-top'>
                     <View className='user-settings'>
-                        <AtIcon className='user-icon-right' value='bell' size='24' color='#999' onClick={this.showMessages.bind(this)}></AtIcon>
-                        <AtIcon className='user-icon-right settings' value='settings' size='24' color='#999' onClick={this.showSettings.bind(this)}></AtIcon>
+                        <AtBadge value={msgNum} className='user-icon-right'>
+                            <AtIcon value='bell' size='24' color='#999' onClick={this.showMessages.bind(this)}></AtIcon>
+                        </AtBadge>
+
+                        {/* <AtIcon className='user-icon-right settings' value='settings' size='24' color='#999' onClick={this.showSettings.bind(this)}></AtIcon> */}
                         <Text className='clearfix'></Text>
                     </View>
                     <View className='user-info gap'>
                         <View className='user-info-avatar'>
-                            <AtAvatar circle image={avatarImage}></AtAvatar>
+                            <OpenData type='userAvatarUrl' />
                         </View>
                         <View className='user-info-detail'>
                             <AtList className='gap' hasBorder={false}>
-                                <AtListItem title='三井寿' note='悬崖亦是前程万里' hasBorder={false} />
+                                <OpenData type='userNickName' lang="zh_CN" class="setName" />
+                                <AtTag type='primary' circle style="margin-left:5px">💗</AtTag>
                             </AtList>
                         </View>
                     </View>
@@ -58,27 +104,10 @@ export default class UserCenter extends Taro.Component {
 
                 <View className='user-center-list'>
                     <AtList className='gap' hasBorder={false}>
-                        <AtListItem title='时光商城' arrow='right' onClick={this.handleClick} />
-                        <AtListItem title='电影票订单' arrow='right' onClick={this.handleClick} />
-                        <AtListItem title='商品订单' arrow='right' onClick={this.handleClick} />
-                        <AtListItem title='购物车' arrow='right' onClick={this.handleClick} />
-                        <AtListItem title='会员俱乐部' extraText='签到抽好礼' arrow='right' onClick={this.handleClick} />
-                        <AtListItem title='我的活动' arrow='right' onClick={this.handleClick} />
-                        <AtListItem title='直播' arrow='right' hasBorder={false} onClick={this.handleClick} />
+                        <AtListItem title='自己制作' arrow='right' onClick={this.handleClick.bind(this, 'success')} />
+                        <AtListItem title='关于项目' arrow='right' onClick={this.handleClickopen} />
                     </AtList>
                 </View>
-
-                <View className='bottom-tab'>
-                    <AtList className='gap' hasBorder={false}>
-                        <AtListItem title='客服/反馈' arrow='right' onClick={this.handleClick} />
-                        <AtListItem title='基本设置' arrow='right' onClick={this.handleClick} />
-                        <AtListItem title='关于项目' arrow='right' hasBorder={false} onClick={this.handleClick} />
-                    </AtList>
-                </View>
-
-                {/* <View>
-                    <BottomTab tab={this.state.currentTab}></BottomTab>
-                </View> */}
             </View>
         )
     }

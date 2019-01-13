@@ -6,7 +6,7 @@ import './index.less'
 
 export default class MessageItem extends Component {
   render() {
-    const {image, title, subTitle } = this.props
+    const {image, title, subTitle ,time} = this.props
     return (
       <View>
           <View className='list'>
@@ -17,6 +17,7 @@ export default class MessageItem extends Component {
               <View className='list-main-right'>
                 <View className='margin-bottom-15'>
                   <Text>{title}</Text>
+                  <Text className='time_text'>{time}</Text>
                 </View>
                 <View className='margin-bottom-15'>
                   <Text className='subTitle'>{subTitle}</Text>

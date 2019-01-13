@@ -9,6 +9,7 @@ page {
             background: #FFFFFF;
             .user-icon-right {
                 float: right;
+                margin-right:20rpx
             }
             .settings {
                 margin-right: 40px;
@@ -22,15 +23,22 @@ page {
     }
     .user-info {
         display: flex;
-        height: 140px;
+        height: 180px;
         padding-left: 40px;
         background: #FFFFFF;
         &-avatar {
-            flex: 1;
-            margin-top: 16px;
+            overflow:hidden;  
+            display: block;  
+            width: 160rpx;  
+            height: 160rpx;    
+            border-radius: 50%;  
+            border: 2px solid #fff;  
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
         }
         &-detail {
-            flex: 4;
+            display:flex;
+            align-items:center;
+            margin-left:10rpx
         }
     }
     .gap {
@@ -42,4 +50,11 @@ page {
     .at-list__item .item-extra__info {
         max-width: 200px;
     }
+}
+.setName{
+    font-size:32rpx;
+    margin:40rpx 0 0 20rpx
+}
+.user-info-avatar image{
+    border-radius:50%
 }

@@ -17,11 +17,12 @@ class App extends Component {
       'pages/user-center/index',
       'pages/user-setting/index',
       'pages/user-message/index',
+      'pages/map/index'
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: '我的时光网',
+      navigationBarTitleText: '微请柬',
       navigationBarTextStyle: 'black'
     },
     "cloud": true,
@@ -41,6 +42,12 @@ class App extends Component {
         text: "祝福",
         iconPath: "./assets/images/heart.png",
         selectedIconPath: "./assets/images/heart_focus.png"
+      },
+      {
+        pagePath: "pages/user-message/index",
+        text: "留言",
+        iconPath: "./assets/images/msg.png",
+        selectedIconPath: "./assets/images/msg_focus.png"
       },
       {
         pagePath: "pages/user-center/index",
