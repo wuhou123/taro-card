@@ -8,7 +8,7 @@
 
 ![小程序](http://wuhou123.cn/gh_e6768a538d0b_258.jpg)
 
-taro-card文档地址:[https://wuhou123.gitee.io/vuepress/taros/getting-started/](https://wuhou123.gitee.io/vuepress/taros/getting-started/)
+taro-card文档地址 : [<big>document</big>](https://wuhou123.gitee.io/vuepress/taros/getting-started/)
 
 # 项目结构
 
