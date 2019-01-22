@@ -1,8 +1,8 @@
 {
 	"miniprogramRoot": "dist/",
-	"projectname": "weding",
+	"projectname": "wedding-git",
 	"description": "taro-mtime",
-	"appid": "wx80f84ed0d7bd972f",
+	"appid": "wx6a57dd1d31a11c21",
 	"setting": {
 		"urlCheck": false,
 		"es6": false,
