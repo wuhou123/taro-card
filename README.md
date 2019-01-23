@@ -58,6 +58,38 @@ npm run dev:alipay
 
 以当前项目页面使用中的云函数流程来讲解云函数开发的基本流程，学习更多，还是参看小程序官方文档，了解更多。
 
+## 云开发上传编辑图片
+```
+//配置存储路径、相对路径
+let cloudPath = `./static/img/${timestamp}${filePath.match(/\.[^.]+?$/)[0]}`
+console.log(filePath, cloudPath)
+wx.cloud.uploadFile({
+    cloudPath,
+    filePath,
+    success: res => {
+        Taro.atMessage({
+            message: '上传成功',
+            type: 'success'
+        })
+        this.setState({
+            fileId: res.fileID
+        }, () => {
+            let bannerList = [...this.state.getFiles, this.state.fileId]
+            this.uploadImg(bannerList)
+        })
+    },
+    fail: error => {
+        Taro.atMessage({
+            message: JSON.stringify(error),
+            type: 'error'
+        })
+    }
+})
+}
+```
+
+基于数据库操作更新该数据有权限问题，全部写在云函数里处理
+
 ## 祝福页面-用户信息相关查询、存储
 
 祝福页面获取新用户的openid,根据该标识存储用户信息，最后展示
@@ -146,5 +178,5 @@ addUser () {
 
 静态资源走云端存储，可以随时替换，避免发布审核问题
 
-**好吧，欢迎star**
+**好吧，感谢mpvue婚礼项目，欢迎star**
 
