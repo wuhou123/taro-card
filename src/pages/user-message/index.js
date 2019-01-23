@@ -46,7 +46,7 @@ export default class UserMessage extends Taro.Component {
         const that = this
         if (that.state.desc) {
             if(that.state.desc.includes('丑')||that.state.desc.includes('死')||that.state.desc.includes('你妈')){
-                return wx.showToast({
+                return Taro.showToast({
                     title: '好像用语不规范呢,改改吧？',
                     icon: 'none'
                 })
@@ -69,7 +69,7 @@ export default class UserMessage extends Taro.Component {
                 that.getMessageList()
             })
         } else {
-            wx.showToast({
+            Taro.showToast({
                 title: '说点什么吧',
                 icon: 'none'
             })

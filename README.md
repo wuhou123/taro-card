@@ -114,7 +114,7 @@ getIsExist () {
         if (res.data.length === 0) {
           that.addUser()
         } else {
-          wx.showToast({
+          Taro.showToast({
             title:'您已经送过祝福了~'
         })
         }

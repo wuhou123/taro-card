@@ -74,7 +74,7 @@ export default class HotShowing extends Taro.Component {
             that.addUser()
           } else {
             that.getUserList()
-            wx.showToast({
+            Taro.showToast({
                 title:'您已经送过祝福了~',
                 icon:'none'
             })

@@ -24,8 +24,8 @@ export default class HotShowing extends Taro.Component {
             queueData: null,
             emailData: null,
             isEmail: false,
-            isDialog:false,
-            dialogData:null
+            isDialog: false,
+            dialogData: null
         }
     }
 
@@ -38,9 +38,9 @@ export default class HotShowing extends Taro.Component {
             that.setState({
                 imgList: res.data[0].banner || []
             })
-            setTimeout(()=>{
+            setTimeout(() => {
                 this.queue()
-            },8000)
+            }, 8000)
         })
     }
 
@@ -51,7 +51,7 @@ export default class HotShowing extends Taro.Component {
             that.setState({
                 isPlay: false
             })
-            wx.showToast({
+            Taro.showToast({
                 title: '您已暂停音乐播放~',
                 icon: 'none'
             })
@@ -61,7 +61,7 @@ export default class HotShowing extends Taro.Component {
                 isPlay: true
             })
 
-            wx.showToast({
+            Taro.showToast({
                 title: '背景音乐已开启~',
                 icon: 'none'
             })
@@ -85,7 +85,7 @@ export default class HotShowing extends Taro.Component {
     queue() {
         let animation = wx.createAnimation({})
         animation.translate((200 - 60), 0).scale(0.3).opacity(0.5).step({ duration: 2000 }).height(0).step()
-        this.setState({ queueData: animation.export()})
+        this.setState({ queueData: animation.export() })
         let animation2 = wx.createAnimation({})
         animation2.translate(0, 330).step({ duration: 1000 })
         setTimeout(() => {
@@ -93,29 +93,29 @@ export default class HotShowing extends Taro.Component {
                 isEmail: true
             })
         }, 2000)
-        setTimeout(()=>{
+        setTimeout(() => {
             this.setState({
                 emailData: animation2.export()
-            })           
-        },2100)
+            })
+        }, 2100)
     }
     openDialog() {
         this.setState({
-            isDialog:true
+            isDialog: true
         })
     }
-    closeDialog(){
-        if(!this.state.isDialog) return
+    closeDialog() {
+        if (!this.state.isDialog) return
         let animation3 = wx.createAnimation({});
         animation3.translate(1000, 100).step({ duration: 1000 })
         this.setState({
-            dialogData:animation3.export()
+            dialogData: animation3.export()
         })
-        setTimeout(()=>{
+        setTimeout(() => {
             this.setState({
-                isDialog:false
+                isDialog: false
             })
-        },3000)
+        }, 3000)
     }
 
     componentDidMount() {
@@ -135,6 +135,14 @@ export default class HotShowing extends Taro.Component {
         //         })
         //     })
         this.getMusicUrl()
+    }
+
+    componentWillMount() {
+        this.getList()
+    }
+
+    componentDidShow() {
+        //刷新list
         this.getList()
     }
 
@@ -143,7 +151,7 @@ export default class HotShowing extends Taro.Component {
             <View className='page'>
                 <View onClick={this.queue.bind(this)} animation={queueData}>
                     <AtNoticebar marquee>
-                        祝福小朋友，猪年快乐！2019-1-13 于上海 模板最后更新于1-13日晚
+                        祝福小朋友，猪年快乐！2019-1-13上海
                     </AtNoticebar>
                 </View>
                 {

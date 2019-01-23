@@ -1,6 +1,6 @@
 import Taro from '@tarojs/taro'
 import { View, Text, OpenData, Button } from '@tarojs/components'
-import { AtIcon, AtList, AtListItem, AtTag, AtBadge, AtMessage, AtModal, AtModalHeader, AtModalContent, AtModalAction } from "taro-ui"
+import { AtIcon, AtList, AtListItem, AtTag, AtBadge, AtModal} from "taro-ui"
 
 import './index.less'
 
@@ -39,9 +39,12 @@ export default class UserCenter extends Taro.Component {
     }
 
     handleClick = type => {
-        Taro.atMessage({
-            'message': '抱歉，个人未开放权限！',
-            'type': type,
+        // Taro.atMessage({
+        //     'message': '抱歉，个人未开放权限！',
+        //     'type': type,
+        // })
+        Taro.navigateTo({
+            url: `/pages/upload-img/index`
         })
     }
 
@@ -78,7 +81,7 @@ export default class UserCenter extends Taro.Component {
                     title='关于'
                     confirmText='确认'
                     onConfirm={this.handleConfirm}
-                    content='这是一个微请柬项目\n\rjust for interesting things'
+                    content='1. 这是一个微请柬项目\n\r2. just for interesting things\n\r3. 后续逐步开放个人在线制作微电子请柬！\n\r4.weixin: zx133455667'
                 />
                 <View className='user-center-top'>
                     <View className='user-settings'>

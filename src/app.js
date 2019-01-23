@@ -17,7 +17,8 @@ class App extends Component {
       'pages/user-center/index',
       'pages/user-setting/index',
       'pages/user-message/index',
-      'pages/map/index'
+      'pages/map/index',
+      'pages/upload-img/index'
     ],
     window: {
       backgroundTextStyle: 'light',
